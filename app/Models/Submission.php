@@ -9,21 +9,15 @@ class Submission extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'file_path',
-        'feedback',
-        'grade',
-        'assignment_id',
-        'user_id',
-    ];
+    protected $fillable = ['assignment_id', 'student_id', 'file_path', 'nilai', 'feedback', 'is_published'];
 
     public function assignment()
     {
-        return $this->belongsTo(Assignment::class, 'assignment_id', 'id');
+        return $this->belongsTo(Assignment::class);
     }
 
     public function student()
     {
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

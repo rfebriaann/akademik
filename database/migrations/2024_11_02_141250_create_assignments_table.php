@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assignments', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('deskripsi')->nullable();
-            $table->dateTime('batas_waktu');
-            $table->string('file_pendukung')->nullable();
-            $table->date('tanggal_pembuatan');
-            $table->foreignId('course_id')->constrained('courses', 'id')->onDelete('cascade');
-            $table->timestamps();
-        });
+        if (! Schema::hasTable('assignments')) {
+            Schema::create('assignments', function (Blueprint $table) {
+                $table->id();
+                $table->string('nama_tugas');
+                $table->text('deskripsi')->nullable();
+                $table->dateTime('batas_waktu');
+                $table->string('file')->nullable();
+                $table->unsignedBigInteger('course_id');
+                $table->unsignedBigInteger('created_by'); // dosen yang membuat tugas
+                $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+                $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

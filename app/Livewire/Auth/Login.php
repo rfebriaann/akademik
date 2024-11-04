@@ -28,9 +28,9 @@ class Login extends Component
             if($users->hasRole('Admin')){
                 return redirect()->route('admin.user.index');
             } elseif ($users->hasRole('Dosen')) {
-                return redirect()->route('dosen.dashboard');
+                return redirect()->route('dosen.matakuliah.index');
             } elseif ($users->hasRole('Mahasiswa')) {
-                return redirect()->route('mahasiswa.dashboard');
+                return redirect()->route('mahasiswa.kelas.index');
             }
             // return redirect()->intended('/dashboard');
         } else {

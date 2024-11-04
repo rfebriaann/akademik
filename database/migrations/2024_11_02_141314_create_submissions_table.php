@@ -11,14 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('submissions', function (Blueprint $table) {
-            $table->id();
-            $table->string('file_path');
-            $table->dateTime('tanggal_submit');
-            $table->foreignId('assignment_id')->constrained('assignments', 'id')->onDelete('cascade');
-            $table->foreignId('mahasiswa_id')->constrained('users', 'id')->onDelete('cascade');
-            $table->timestamps();
-        });
+        if (! Schema::hasTable('submissions')) {
+            Schema::create('submissions', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('assignment_id');
+                $table->unsignedBigInteger('student_id');
+                $table->string('file_path');
+                $table->integer('nilai')->nullable(); 
+                $table->text('feedback')->nullable();
+                $table->boolean('is_published')->default(false);
+                $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
+                $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

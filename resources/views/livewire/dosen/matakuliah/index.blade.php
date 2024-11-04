@@ -1,66 +1,7 @@
 <div>
-    <div class="h-full my-10 mx-40 gap-10">
+    <div class="h-full my-10 gap-10">
         <div class="flex flex-col gap-10 justify-center">
-            <div class="flex justify-around gap-5">
-                <div class="p-5 h-36 w-full rounded-2xl bg-[#85BF90]">
-                    <div class="flex flex-col gap-4">
-                        <div class="flex justify-between">
-                            <div class="bg-[#a0caa7] w-9 rounded-full p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                                    <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                                    <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                                </svg>
-                            </div>
-                            <div class="p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <h2 class="text-white font-medium font-poppins leading-4">Lorem ipsum dolor sit amet.</h2>
-                            <p class="text-white font-poppins leading-5 text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-5 w-full rounded-2xl bg-[#303E59]">
-                    <div class="flex flex-col gap-4">
-                        <div class="flex justify-between">
-                            <div class="bg-[#47597b] w-9 rounded-full p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                                    <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                                    <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                                </svg>
-                            </div>
-                            <div class="p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <h2 class="text-white font-medium font-poppins leading-4">Lorem ipsum dolor sit amet.</h2>
-                            <p class="text-white font-poppins leading-5 text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-5 w-full rounded-2xl bg-[#DA569E]">
-                    <div class="flex flex-col gap-4">
-                        <div class="flex justify-between">
-                            <div class="bg-[#ec69b1] w-9 rounded-full p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                                    <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                                    <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                                </svg>
-                            </div>
-                            <div class="p-2">
-                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <h2 class="text-white font-medium font-poppins leading-4">Lorem ipsum dolor sit amet.</h2>
-                            <p class="text-white font-poppins leading-5 text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="w-full p-10 bg-white rounded-2xl">
                 <div class="flex flex-col gap-4">
                     <div class="flex justify-between items-center">
@@ -72,7 +13,34 @@
                         </div>
                     </div>
                     <div class="flex h-auto w-full gap-4 mt-2">
-                        <div class="relative overflow-x-auto rounded-lg">
+                        
+                        <div class="grid-cols-3 grid gap-4 mb-6 w-full">
+                            @foreach ($courses as $i => $course)
+                            <a href="{{route('dosen.matakuliah.material.{id}', $course->id)}}" class="">
+                                <div class="p-5 h-36  rounded-3xl bg-[#E4E7F1]  transition duration-500 hover:shadow-lg ">
+                                    <div class="flex flex-col gap-4">
+                                        <div class="flex justify-between">
+                                            <div class="bg-[#a0caa7] w-9 rounded-full p-2">
+                                                <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                                                    <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                                                    <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="p-2">
+                                                <svg class="w-5 h-5 text-gray-900 transition duration-75 group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2 text-gray-900">
+                                            <h2 class=" font-medium text-lg font-poppins leading-4">{{ $course->nama_mata_kuliah }}</h2>
+                                            <p class=" font-poppins leading-5 text-sm">{{ $course->deskripsi }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            @endforeach
+                        </div>
+
+                        {{-- <div class="relative overflow-x-auto rounded-lg">
                             <table class="w-full text-sm text-left rtl:text-right text-white">
                                 <thead class="text-xs text-white uppercase bg-[#303E59] text-center">
                                     <tr>
@@ -130,7 +98,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

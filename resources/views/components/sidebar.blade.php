@@ -32,6 +32,12 @@
                                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor"  class="w-5 h-5 text-black transition duration-75 group-hover:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.088 4.82a10 10 0 0 1 9.412 .314a1 1 0 0 1 .493 .748l.007 .118v13a1 1 0 0 1 -1.5 .866a8 8 0 0 0 -8 0a1 1 0 0 1 -1 0a8 8 0 0 0 -7.733 -.148l-.327 .18l-.103 .044l-.049 .016l-.11 .026l-.061 .01l-.117 .006h-.042l-.11 -.012l-.077 -.014l-.108 -.032l-.126 -.056l-.095 -.056l-.089 -.067l-.06 -.056l-.073 -.082l-.064 -.089l-.022 -.036l-.032 -.06l-.044 -.103l-.016 -.049l-.026 -.11l-.01 -.061l-.004 -.049l-.002 -.068v-13a1 1 0 0 1 .5 -.866a10 10 0 0 1 9.412 -.314l.088 .044l.088 -.044z" /></svg>
                             </a>
                         </li>
+                        <li>
+                            <a href="" class="has-tooltip flex items-center p-2 hover:text-white rounded-lg hover:bg-[#614AC2] hover:rounded-full group">
+                                <span class="tooltip rounded shadow-lg px-2 py-1 bg-black/85 ml-8">Mata Kuliah</span>
+                                <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor"  class="w-5 h-5 text-black transition duration-75 group-hover:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 21a1 1 0 0 1 0 -2h1v-2h-4a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h16a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-4v2h1a1 1 0 0 1 0 2zm7 -4h-4v2h4z" /></svg>
+                            </a>
+                        </li>
                         @endrole
                         @role('Mahasiswa')
                         <li>

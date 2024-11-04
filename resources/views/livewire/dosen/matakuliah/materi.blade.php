@@ -4,10 +4,10 @@
             <div class="flex flex-col gap-4">
                 <div class="flex justify-between">
                     <div>
-                        <h1 class="font-poppins font-semibold text-2xl">Manajemen Pengguna</h1>
+                        <h1 class="font-poppins font-semibold text-2xl">Materi</h1>
                     </div>
                     <div>
-                        <button class="bg-[#DA569E] font-poppins font-medium text-white shadow-md shadow-pink-300 hover:bg-[#e963ad] rounded-2xl px-3 py-2">Tambah Pengguna</button>
+                        <a href="{{route('dosen.matakuliah.material.create.{id}', $id)}}" class="bg-[#DA569E] font-poppins text-sm font-medium text-white shadow-md shadow-pink-300 hover:bg-[#e963ad] rounded-2xl px-3 py-2">Tambah Materi</a>
                     </div>
                 </div>
                 <div class="p-6 w-full bg-[#f4f4f4] rounded-2xl">
@@ -19,13 +19,10 @@
                                         #
                                     </th>
                                     <th scope="col" class="px-10 py-3">
-                                        Nama Pengguna
+                                        Nama Materi
                                     </th>
-                                    <th scope="col" class="px-20 py-3">
-                                        Email
-                                    </th>
-                                    <th scope="col" class="px-20 py-3">
-                                        Jenis
+                                    <th scope="col" class=" py-3">
+                                        File
                                     </th>
                                     <th scope="col" class="px-20 py-3">
                                         Aksi
@@ -33,30 +30,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $i => $user)
+                                @foreach ($materials as $i => $material)
                                     <tr class="odd:bg-[#E4E7F1] even:bg-[#fefefe] border-b border-white/20 text-gray-900">
                                         <td class="px-4 py-4">
                                             {{ $i + 1 }}
                                         </td>
                                         <th scope="row" class="px-10 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {{ $user->name }}
+                                            {{ $material->material_name }}
                                         </th>
-                                        <td class="px-20 py-4 text-gray-900">
-                                            {{ $user->email }}
-                                        </td>
-                                        <td class="px-20 py-4 text-gray-900">
-                                            {{-- {{$userrole = $user->getRoleNames();}} --}}
-                                            @foreach ($user->getRoleNames() as $role)
-                                                {{ $role }}
-                                            @endforeach
+                                        <td scope="row" class="py-4 text-center font-normal text-gray-900 whitespace-nowrap underline">
+                                            <a href="{{ asset('storage/' . $material->file_path) }}" target="_blank" class="block w-1/2">
+                                                <div class="flex w-1/2 gap-2">
+                                                    <img class="w-5 h-5" src="{{asset('storage/assets/icon/pdf.png')}}" alt="">
+                                                    <p>Lihat file</p>
+                                                </div>
+                                                {{-- {{ $material->file_name }} --}}
+                                            </a>
                                         </td>
                                         <td>
                                             <div class="flex items-center">
                                                 <div>
-                                                    <a href="{{route('admin.user.edit.{id}', $user->id)}}" class="block px-4 py-2 text-gray-900">Edit Data</a>
+                                                    <a href="{{route('admin.user.edit.{id}', $material->id)}}" class="block px-4 py-2 text-gray-900">Edit Data</a>
                                                 </div>
                                                 <div>
-                                                    <button wire:click="destroy({{$user->id}})">Hapus 🗑️</button>
+                                                    <button wire:click="destroy({{$material->id}})">Hapus 🗑️</button>
                                                 </div>
                                             </div>
                                         </td>

@@ -32,6 +32,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':Dosen'])->group(function ()
     Route::get('/dosen/course/index', App\Livewire\Dosen\Matakuliah\Index::class)->name('dosen.matakuliah.index');
     Route::get('/dosen/course/create', App\Livewire\Dosen\Matakuliah\Create::class)->name('dosen.matakuliah.create');
     Route::get('/dosen/course/edit/{id}', App\Livewire\Dosen\Matakuliah\Edit::class)->name('dosen.matakuliah.edit.{id}');
+    Route::get('/dosen/course/material/{id}', App\Livewire\Dosen\Matakuliah\Materi::class)->name('dosen.matakuliah.material.{id}');
+    Route::get('/dosen/course/material/create/{id}', App\Livewire\Dosen\Materi\Create::class)->name('dosen.matakuliah.material.create.{id}');
+    
+    // materi
+    // Route::get('/dosen/material/index', App\Livewire\Dosen\Materi\Index::class)->name('dosen.materi.index');
 });
 
 Route::middleware(['auth', RoleMiddleware::class . ':Mahasiswa'])->group(function () {

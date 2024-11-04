@@ -1,5 +1,5 @@
 <div>
-    <div class="flex h-full my-10 mx-40 gap-10">
+    <div class="flex h-full my-10 gap-10">
         <div class="w-full p-10 bg-white rounded-2xl">
             <div class="flex flex-col gap-4">
                 <section class="mt-4">

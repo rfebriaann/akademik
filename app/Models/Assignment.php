@@ -9,20 +9,20 @@ class Assignment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'judul',
-        'deskripsi',
-        'due_date',
-        'course_id',
-    ];
+    protected $fillable = ['nama_tugas', 'deskripsi', 'batas_waktu', 'file', 'course_id', 'created_by'];
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'course_id', 'course_id');
+        return $this->belongsTo(Course::class);
     }
 
     public function submissions()
     {
-        return $this->hasMany(Submission::class, 'assignment_id', 'id');
+        return $this->hasMany(Submission::class);
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
