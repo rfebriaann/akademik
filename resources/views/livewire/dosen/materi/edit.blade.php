@@ -11,12 +11,12 @@
                                 </div>
                             </a>
                             <div>
-                                <h1 class="font-poppins font-semibold text-2xl">Tambah Tugas</h1>
+                                <h1 class="font-poppins font-semibold text-2xl">Edit Mata Kuliah</h1>
                             </div>
                         </div>
                         <div class="bg-white w-full relative sm:rounded-lg overflow-hidden mt-10">
                             <div class="overflow-x-auto">
-                                <form action="" wire:submit="submit">
+                                <form action="" wire:submit="update">
                                     <div class="space-y-6">
                                         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-10">
                                             <div class="space-y-1">
@@ -24,22 +24,23 @@
                                                     for="nama"
                                                     class="font-medium  text-gray-800"
                                                 >
-                                                    Nama Tugas <span class="text-red-600">*</span>
+                                                    Judul materi<span class="text-red-600">*</span>
                                                 </label>
                                                 <p class="text-sm text-gray-600">
-                                                    Tambah nama tugas anda
+                                                    Edit nama judul materi
                                                 </p>
                                             </div>
                                             <div class="pt-0 lg:pt-3">
                                                 <input 
-                                                    id="nama_tugas"
+                                                    id="nama"
                                                     type="text"
                                                     class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[30px]"
-                                                    wire:model="nama_tugas"
-                                                    name="nama_tugas"
+                                                    wire:model="material_name"
+                                                    wire:target="store"
+                                                    name="nama"
                                                     wire:loading.attr="disabled"
                                                 ></input>
-                                                @error('nama_tugas')
+                                                @error('material_name')
                                                     <span class="block mt-0 text-xs text-red-600">
                                                         {{ $message }}
                                                     </span>
@@ -52,75 +53,17 @@
                                                     for="detail"
                                                     class="font-medium text-gray-800"
                                                 >
-                                                    deskripsi <span class="text-red-600">*</span>
+                                                    File <span class="text-red-600">*</span>
                                                 </label>
                                                 <p class="text-sm text-gray-600">
-                                                    Edit deskripsi tugas 
-                                                </p>
-                                            </div>
-                                            <div class="pt-0 lg:pt-3">
-                                                <input 
-                                                    type="text"
-                                                    id="deskripsi"
-                                                    name="deskripsi"
-                                                    class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[40px]"
-                                                    wire:model="deskripsi"
-                                                    wire:loading.attr="disabled"
-                                                ></input>
-                                                @error('deskripsi')
-                                                    <span class="block mt-0 text-xs text-red-600">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-10">
-                                            <div class="space-y-1">
-                                                <label 
-                                                    for="nama"
-                                                    class="font-medium  text-gray-800"
-                                                >
-                                                    Batas waktu tugas <span class="text-red-600">*</span>
-                                                </label>
-                                                <p class="text-sm text-gray-600">
-                                                    Tambahkan batas waktu tugas
-                                                </p>
-                                            </div>
-                                            <div class="pt-0 lg:pt-3">
-                                                <input 
-                                                    type="date"
-                                                    id="email"
-                                                    name="batas_waktu"
-                                                    class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[40px]"
-                                                    wire:model="batas_waktu"
-                                                    wire:target="store"
-                                                    wire:loading.attr="disabled"
-                                                ></input>
-                                                @error('batas_waktu')
-                                                    <span class="block mt-0 text-xs text-red-600">
-                                                        {{ $message }}
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-10">
-                                            <div class="space-y-1">
-                                                <label 
-                                                    for="nama"
-                                                    class="font-medium  text-gray-800"
-                                                >
-                                                    Tambahkan file pendukung <span class="text-red-600">*</span>
-                                                </label>
-                                                <p class="text-sm text-gray-600">
-                                                    tambahkan file pendukung dari tugasnya
+                                                    Edit file materi kulaih
                                                 </p>
                                             </div>
                                             <div class="pt-0 lg:pt-3">
                                                 <input 
                                                     type="file"
-                                                    id="file"
-                                                    name="file"
+                                                    id="email"
+                                                    name="email"
                                                     class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[40px]"
                                                     wire:model="file"
                                                     wire:target="store"
@@ -132,7 +75,28 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            
                                         </div>
+                                        <input 
+                                            hidden
+                                            type="kode_mata_kuliah"
+                                            id="kode_mata_kuliah"
+                                            name="kode_mata_kuliah"
+                                            class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[40px]"
+                                            wire:model="kode_mata_kuliah"
+                                            wire:target="store"
+                                            wire:loading.attr="disabled"
+                                        ></input>
+                                        <input 
+                                            hidden
+                                            type="dosen_id"
+                                            id="dosen_id"
+                                            name="dosen_id"
+                                            class="w-full border border-gray-300 p-4 text-black rounded-md focus:border-gray-800 focus:ring-gray-800 disabled:bg-gray-50 min-h-[40px]"
+                                            wire:model="dosen_id"
+                                            wire:target="store"
+                                            wire:loading.attr="disabled"
+                                        ></input>
                                         <div class="flex justify-end">
                                             <button type="submit" class=" w-28 rounded-xl p-3 bg-[#0365FE] text-lg text-white hover:bg-[#2678fc]">simpan</button>
                                         </div>

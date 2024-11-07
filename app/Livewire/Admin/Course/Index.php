@@ -6,9 +6,11 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 
 class Index extends Component
 {
+    #[Layout('layouts.admin')]
     public $nama_mata_kuliah;
     public $kode_mata_kuliah;
     public $deskripsi;

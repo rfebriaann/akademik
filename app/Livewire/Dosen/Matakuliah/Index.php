@@ -13,6 +13,9 @@ class Index extends Component
     use LivewireAlert;
     #[Layout('layouts.app')]
     
+    public $id;
+    public $name;
+    
     public function destroy($id){
         Course::destroy($id);
 
@@ -27,6 +30,7 @@ class Index extends Component
 
     public function render()
     {
+        $this->name = Auth::user()->name;
         return view('livewire.dosen.matakuliah.index', [
             'courses' => Course::where('dosen_id', Auth::id())->get()
         ]);

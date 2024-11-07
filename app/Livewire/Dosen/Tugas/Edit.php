@@ -3,13 +3,12 @@
 namespace App\Livewire\Dosen\Tugas;
 
 use App\Models\Assignment;
-use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
     use WithFileUploads;
     use LivewireAlert;
@@ -20,7 +19,7 @@ class Create extends Component
     public $deskripsi;
     public $batas_waktu;
     public $file;
-    // public $course_id;
+    public $course_id;
 
     protected $rules = [
         'nama_tugas' => 'required|string|max:255',
@@ -30,32 +29,45 @@ class Create extends Component
         // 'course_id' => 'required|exists:courses,id',
     ];
 
-    public function submit()
+    public function mount($id)
     {
+        $assignment = Assignment::find($id);
+
+        $this->id   = $assignment->id;
+        $this->nama_tugas  = $assignment->nama_tugas;
+        $this->deskripsi  = $assignment->deskripsi;
+        $this->batas_waktu  = $assignment->batas_waktu;
+    }
+
+    public function update(){
+
         $this->validate();
+        $assignment = Assignment::find($this->id);
 
-        $filePath = $this->file ? $this->file->store('assignments', 'public') : null;
+        $filePath = $this->file
+            ? $this->file->store('assignments', 'public')  // Upload to 'storage/app/public/materials'
+            : $assignment->file;
 
-        Assignment::create([
+
+        $assignment->update([
             'nama_tugas' => $this->nama_tugas,
             'deskripsi' => $this->deskripsi,
             'batas_waktu' => $this->batas_waktu,
             'file' => $filePath,
-            'course_id' => $this->id,
-            'created_by' => Auth::id(),
         ]);
 
-        $this->alert('success', 'Tugas berhasil dibuat', [
+        $this->alert('success', 'Tugas berhasil diedit', [
             'position' => 'center',
             'timer' => 1000,
             'toast' => true,
             'timerProgressBar' => true,
         ]);
-        return redirect()->route('dosen.matakuliah.material.{id}', $this->id);
+        return redirect()->route('dosen.matakuliah.material.tugas.detail.{id}', $assignment->id);
+
     }
     
     public function render()
     {
-        return view('livewire.dosen.tugas.create');
+        return view('livewire.dosen.tugas.edit');
     }
 }

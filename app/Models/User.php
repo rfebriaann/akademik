@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -36,6 +36,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
+    public function course()
+    {
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
+    }
 
     public function createdCourses()
     {
@@ -66,4 +71,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Course::class, 'course_users', 'user_id', 'course_id');
     }
+
+    // public function courses()
+    // {
+    //     return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
+    // }
+
+    public function coursess()
+    {
+        return $this->belongsToMany(Course::class, 'courseuser');
+    }
+
 }

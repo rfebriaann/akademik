@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Mahasiswa\KelasShow;
 use App\Http\Middleware\RoleMiddleware;
 use App\Livewire\Auth\Logout;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,6 @@ Route::middleware(['auth', RoleMiddleware::class . ':Admin'])->group(function ()
     // manajemen user
     Route::get('/admin/user/index', App\Livewire\Admin\User\Index::class)->name('admin.user.index');
     Route::get('/admin/user/edit/{id}', App\Livewire\Admin\User\Edit::class)->name('admin.user.edit.{id}');
-
     Route::get('/admin/course/index', App\Livewire\Admin\Course\Index::class)->name('admin.course.index');
     Route::get('/', App\Livewire\Dosen\Dashboard\Index::class)->name('homepage');
 });
@@ -32,9 +32,15 @@ Route::middleware(['auth', RoleMiddleware::class . ':Dosen'])->group(function ()
     Route::get('/dosen/course/index', App\Livewire\Dosen\Matakuliah\Index::class)->name('dosen.matakuliah.index');
     Route::get('/dosen/course/create', App\Livewire\Dosen\Matakuliah\Create::class)->name('dosen.matakuliah.create');
     Route::get('/dosen/course/edit/{id}', App\Livewire\Dosen\Matakuliah\Edit::class)->name('dosen.matakuliah.edit.{id}');
+    // material
     Route::get('/dosen/course/material/{id}', App\Livewire\Dosen\Matakuliah\Materi::class)->name('dosen.matakuliah.material.{id}');
     Route::get('/dosen/course/material/create/{id}', App\Livewire\Dosen\Materi\Create::class)->name('dosen.matakuliah.material.create.{id}');
+    Route::get('/dosen/course/material/assignment/{id}', App\Livewire\Dosen\Tugas\Create::class)->name('dosen.matakuliah.material.tugas.{id}');
+    Route::get('/dosen/course/material/assignment/detail/{id}', App\Livewire\Dosen\Tugas\Detail::class)->name('dosen.matakuliah.material.tugas.detail.{id}');
+    Route::get('/dosen/course/material/assignment/grade/{id}', App\Livewire\Dosen\Penilaian\Create::class)->name('dosen.matakuliah.material.tugas.nilai.{id}');
+    Route::get('/dosen/course/material/edit/{id}', App\Livewire\Dosen\Materi\Edit::class)->name('dosen.matakuliah.material.edit.{id}');
     
+    Route::get('/dosen/course/material/assignment/edit/{id}', App\Livewire\Dosen\Tugas\Edit::class)->name('dosen.matakuliah.material.tugas.edit.{id}');
     // materi
     // Route::get('/dosen/material/index', App\Livewire\Dosen\Materi\Index::class)->name('dosen.materi.index');
 });
@@ -43,5 +49,8 @@ Route::middleware(['auth', RoleMiddleware::class . ':Mahasiswa'])->group(functio
     Route::get('/mahasiswa/dashboard', App\Livewire\Mahasiswa\Dashboard\Index::class)->name('mahasiswa.dashboard');
     // Kelas
     Route::get('/mahasiswa/kelas', App\Livewire\Mahasiswa\Kelas\Index::class)->name('mahasiswa.kelas.index');
+    Route::get('/mahasiswa/kelas/{id}', App\Livewire\Mahasiswa\Kelas\Detail::class)->name('mahasiswa.kelas.{id}');
+    Route::get('/mahasiswa/kelas/tugas/{id}', App\Livewire\Mahasiswa\Kelas\Tugas::class)->name('mahasiswa.kelas.tugas.{id}');
 
+    // Route::get('/mahasiswa/kelas/{courseId}', KelasShow::class)->name('mahasiswa.kelas.show');
 });

@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\User;
 
 use Livewire\Component;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Role;
@@ -12,17 +12,23 @@ use Spatie\Permission\Models\Role;
 class Index extends Component
 {
     use WithPagination;
-    #[Layout('layouts.app')]
+    #[Layout('layouts.admin')]
 
     public $name, $email, $password, $role, $userId;
     public $isEdit = false;
-
+    public $selectedRole = null;
+    // public $users = [];
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|min:8',
         'role' => 'required|exists:roles,name',
     ];
+
+    public function updatedSelectedRole()
+    {
+        $this->users = User::role($this->selectedRole)->get();
+    }
 
     public function resetForm()
     {
@@ -61,8 +67,13 @@ class Index extends Component
 
     public function render()
     {
+        $this->name = Auth::user()->name;
         return view('livewire.admin.user.index', [
-            'users' => User::with('roles')->paginate(10),
+            'users' => User::with('roles')
+            ->whereHas('roles', function($query) {
+                $query->whereIn('name', ['Mahasiswa', 'Dosen']);
+            })
+            ->paginate(15),
             'roles' => Role::all(),
         ]);
     }

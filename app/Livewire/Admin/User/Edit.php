@@ -11,7 +11,7 @@ use Livewire\Component;
 class Edit extends Component
 {
     use LivewireAlert;
-    #[Layout('layouts.app')]
+    #[Layout('layouts.admin')]
 
     public $id;
     #[Rule('required|min:2|max:100')]

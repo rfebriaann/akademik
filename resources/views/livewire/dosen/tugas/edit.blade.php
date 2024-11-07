@@ -16,7 +16,7 @@
                         </div>
                         <div class="bg-white w-full relative sm:rounded-lg overflow-hidden mt-10">
                             <div class="overflow-x-auto">
-                                <form action="" wire:submit="submit">
+                                <form action="" wire:submit="update">
                                     <div class="space-y-6">
                                         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-10">
                                             <div class="space-y-1">
@@ -27,7 +27,7 @@
                                                     Nama Tugas <span class="text-red-600">*</span>
                                                 </label>
                                                 <p class="text-sm text-gray-600">
-                                                    Tambah nama tugas anda
+                                                    Edit nama tugas anda
                                                 </p>
                                             </div>
                                             <div class="pt-0 lg:pt-3">
@@ -84,7 +84,7 @@
                                                     Batas waktu tugas <span class="text-red-600">*</span>
                                                 </label>
                                                 <p class="text-sm text-gray-600">
-                                                    Tambahkan batas waktu tugas
+                                                    Edit batas waktu tugas
                                                 </p>
                                             </div>
                                             <div class="pt-0 lg:pt-3">
@@ -113,7 +113,7 @@
                                                     Tambahkan file pendukung <span class="text-red-600">*</span>
                                                 </label>
                                                 <p class="text-sm text-gray-600">
-                                                    tambahkan file pendukung dari tugasnya
+                                                    Edit file pendukung dari tugasnya
                                                 </p>
                                             </div>
                                             <div class="pt-0 lg:pt-3">
