@@ -33,13 +33,13 @@
                                 @foreach ($materials as $i => $material)
                                     <div class="flex flex-col justify-between p-6 rounded-2xl bg-[#D1E3E2] hover:bg-[#ACCAC8] transition duration-300">
                                         
-                                        <div class="flex justify-between items-center">
+                                        <div class="flex md:flex-row sm:flex-col justify-between items-center">
                                             <div class="flex gap-4 items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-signature"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17c3.333 -3.333 5 -6 5 -8c0 -3 -1 -3 -2 -3s-2.032 1.085 -2 3c.034 2.048 1.658 4.877 2.5 6c1.5 2 2.5 2.5 3.5 1l2 -3c.333 2.667 1.333 4 3 4c.53 0 2.639 -2 3 -2c.517 0 1.517 .667 3 2" /></svg>
                                                 <h1 class="text-lg font-poppins">{{$material->material_name}}</h1>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <a href="{{ asset('storage/' . $material->file_path) }}"  class="px-3 py-2 rounded-full bg-white text-gray-900" target="_blank">Unduh materi</a>
+                                                <a href="{{ asset('storage/' . $material->file_path) }}"  class="px-3 py-2 md:rounded-full sm:rounded-md sm:text-center bg-white text-gray-900" target="_blank">Unduh materi</a>
                                                 <div class="flex gap-2">
                                                     <a class=" text-white" href="{{route('dosen.matakuliah.material.edit.{id}', $material->id)}}">
                                                         <div class="flex p-0 rounded-full items-center">
@@ -88,6 +88,9 @@
                                                 <th scope="col" class=" py-3">
                                                     Email
                                                 </th>
+                                                <th scope="col" class=" py-3">
+                                                    Username
+                                                </th>
                                                 {{-- <th scope="col" class="px-3 py-3">
                                                     Aksi
                                                 </th> --}}
@@ -104,6 +107,9 @@
                                                     </th>
                                                     <td scope="row" class="px-10 py-4 text-gray-900 whitespace-nowrap">
                                                         {{ $student->user->email }}
+                                                    </td>
+                                                    <td scope="row" class="px-10 py-4 text-gray-900 whitespace-nowrap">
+                                                        {{ $student->user->username }}
                                                     </td>
                                                     {{-- <td class="text-center">
                                                         <div class="flex items-center justify-center gap-2">
@@ -144,7 +150,7 @@
                         </div>
                         
                         <p class="text-sm">Pilih tugas untuk melihat detail tugas dan pemberian nilai</p>
-                        <input class="w-full rounded-2xl py-1.5 px-4 mb-4" type="text" id="search" wire:model.live="search_tugas" placeholder="Cari judul tugas">
+                        <input class="w-full rounded-2xl py-1.5 px-4 mb-4" type="text" id="search" wire:model.live="search" placeholder="Cari judul tugas">
                         <div class="flex flex-col gap-4">
                             @foreach ($assignments as $item)
                                 <a href="{{route('dosen.matakuliah.material.tugas.detail.{id}', $item->id)}}">

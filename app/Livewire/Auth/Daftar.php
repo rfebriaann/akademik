@@ -4,14 +4,17 @@ namespace App\Livewire\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Daftar extends Component
 {
+    use LivewireAlert;
     #[Layout('layouts.auth')]
     public $name;
     public $email;
+    public $username;
     public $password;
     public $password_confirmation;
 
@@ -20,7 +23,8 @@ class Daftar extends Component
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:3|confirmed',
         ];
     }
 
@@ -31,6 +35,7 @@ class Daftar extends Component
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
+            'username' => $this->username,
             'password' => Hash::make($this->password),
         ]);
 
@@ -41,7 +46,12 @@ class Daftar extends Component
         // event(new Registered($user));
         // $user->sendEmailVerificationNotification();
 
-        session()->flash('success', 'Akun Anda telah dibuat! Silakan verifikasi email Anda.');
+        $this->alert('success', 'Akun berhasil terdaftar', [
+            'position' => 'center',
+            'timer' => 1000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
 
         return redirect()->route('login');
     }

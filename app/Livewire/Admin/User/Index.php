@@ -17,46 +17,11 @@ class Index extends Component
     public $name, $email, $password, $role, $userId;
     public $isEdit = false;
     public $selectedRole = null;
-    // public $users = [];
-    protected $rules = [
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|min:8',
-        'role' => 'required|exists:roles,name',
-    ];
+    public $search = '';
 
-    public function updatedSelectedRole()
+    public function updatingSelectedRole()
     {
-        $this->users = User::role($this->selectedRole)->get();
-    }
-
-    public function resetForm()
-    {
-        $this->name = '';
-        $this->email = '';
-        $this->password = '';
-        $this->role = '';
-    }
-
-    public function createUser()
-    {
-        $this->validate();
-
-        // Membuat pengguna baru
-        $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-        ]);
-
-        // Menetapkan peran ke pengguna yang baru dibuat
-        $user->assignRole($this->role);
-
-        // Memberikan pesan sukses untuk ditampilkan di tampilan
-        session()->flash('message', 'User created successfully.');
-
-        // Mengosongkan form setelah berhasil menambah data
-        $this->resetForm();
+        $this->resetPage();
     }
     
     public function destroy($id){
@@ -67,14 +32,27 @@ class Index extends Component
 
     public function render()
     {
-        $this->name = Auth::user()->name;
-        return view('livewire.admin.user.index', [
-            'users' => User::with('roles')
-            ->whereHas('roles', function($query) {
+        $users = User::with('roles')
+            ->whereHas('roles', function ($query) {
                 $query->whereIn('name', ['Mahasiswa', 'Dosen']);
             })
-            ->paginate(15),
-            'roles' => Role::all(),
+            ->when($this->search, function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
+            })
+            ->when($this->selectedRole, function ($query) {
+                $query->whereHas('roles', function ($query) {
+                    $query->where('name', $this->selectedRole);
+                });
+            })
+            ->paginate(15);
+
+        $roles = Role::whereIn('name', ['Mahasiswa', 'Dosen'])->get();
+
+
+        $this->name = Auth::user()->name;
+        return view('livewire.admin.user.index', [
+            'users' => $users,
+            'roles' => $roles,
         ]);
     }
 }

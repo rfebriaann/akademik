@@ -1,38 +1,36 @@
-<?php 
-namespace App\Livewire\Auth;
+<?php
+
+namespace App\Livewire\Admin\User;
 
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
-class Register extends Component
+class Create extends Component
 {
+
     use LivewireAlert;
-    #[Layout('layouts.auth')]
+    #[Layout('layouts.admin')]
     public $name;
     public $email;
     public $username;
     public $password;
     public $password_confirmation;
+    public $role;
 
-    protected function rules()
-    {
-        return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:3|confirmed',
-        ];
-    }
+    protected $rules = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'username' => 'required|string|max:255|unique:users',
+        'password' => 'required|string|min:3|confirmed',
+    ];
 
-    public function register()
+    public function submit()
     {
         $this->validate();
-
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -40,20 +38,23 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        $user->assignRole('mahasiswa');
+        $user->assignRole($this->role);
 
-        $this->alert('success', 'Akun berhasil terdaftar', [
+        $this->alert('success', 'Berhasil buat akun', [
             'position' => 'center',
             'timer' => 1000,
             'toast' => true,
             'timerProgressBar' => true,
         ]);
 
-        return redirect()->route('login');
+        return redirect()->route('admin.user.index');
     }
 
     public function render()
     {
-        return view('livewire.auth.register');
+        $role = Role::all();
+        return view('livewire.admin.user.create', [
+            'roles' => $role
+        ]);
     }
 }

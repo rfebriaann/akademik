@@ -22,8 +22,26 @@ Route::middleware(['auth', RoleMiddleware::class . ':Admin'])->group(function ()
     // manajemen user
     Route::get('/admin/user/index', App\Livewire\Admin\User\Index::class)->name('admin.user.index');
     Route::get('/admin/user/edit/{id}', App\Livewire\Admin\User\Edit::class)->name('admin.user.edit.{id}');
+    Route::get('/admin/user/create', App\Livewire\Admin\User\Create::class)->name('admin.user.create');
+
+    // mata kuliah
     Route::get('/admin/course/index', App\Livewire\Admin\Course\Index::class)->name('admin.course.index');
-    Route::get('/', App\Livewire\Dosen\Dashboard\Index::class)->name('homepage');
+    Route::get('/admin/course/create', App\Livewire\Admin\Course\Create::class)->name('admin.course.create');
+    Route::get('/admin/course/create/{id}', App\Livewire\Admin\Course\Edit::class)->name('admin.course.edit.{id}');
+    // Route::get('/', App\Livewire\Dosen\Dashboard\Index::class)->name('homepage');
+    
+    // materi
+    Route::get('/admin/material/index', App\Livewire\Admin\Material\Index::class)->name('admin.material.index');
+    Route::get('/admin/material/create', App\Livewire\Admin\Material\Create::class)->name('admin.material.create');
+    Route::get('/admin/material/edit/{id}', App\Livewire\Admin\Material\Edit::class)->name('admin.material.edit.{id}');
+    
+    // assignment
+    Route::get('/admin/assignment/index', App\Livewire\Admin\Assignment\Index::class)->name('admin.assignment.index');
+    Route::get('/admin/assignment/index', App\Livewire\Admin\Assignment\Index::class)->name('admin.assignment.index');
+    Route::get('/admin/assignment/edit/{id}', App\Livewire\Admin\Assignment\Edit::class)->name('admin.assignment.edit.{id}');
+    
+    // tugas
+    Route::get('/admin/submission/index', App\Livewire\Admin\Submission\Index::class)->name('admin.submission.index');
 });
 
 
@@ -41,8 +59,6 @@ Route::middleware(['auth', RoleMiddleware::class . ':Dosen'])->group(function ()
     Route::get('/dosen/course/material/edit/{id}', App\Livewire\Dosen\Materi\Edit::class)->name('dosen.matakuliah.material.edit.{id}');
     
     Route::get('/dosen/course/material/assignment/edit/{id}', App\Livewire\Dosen\Tugas\Edit::class)->name('dosen.matakuliah.material.tugas.edit.{id}');
-    // materi
-    // Route::get('/dosen/material/index', App\Livewire\Dosen\Materi\Index::class)->name('dosen.materi.index');
 });
 
 Route::middleware(['auth', RoleMiddleware::class . ':Mahasiswa'])->group(function () {

@@ -18,7 +18,7 @@
     </head>
     <body class="bg-[#F5F6FA]">
         <x-sidebar/>
-        <div class="mx-40">
+        <div class="mx-2 md:mx-40">
             {{ $slot }}
         </div>
     </body>

@@ -10,19 +10,19 @@ class Login extends Component
 {
     #[Layout('layouts.auth')] 
     
-    public $email;
+    public $username;
     public $password;
 
     protected $rules = [
-        'email' => 'required|email',
-        'password' => 'required|min:6',
+        'username' => 'required',
+        'password' => 'required|min:3',
     ];
 
     public function login()
     {
         $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::attempt(['username' => $this->username, 'password' => $this->password])) {
             session()->regenerate();
             $users = Auth::user();
             if($users->hasRole('Admin')){
@@ -34,7 +34,7 @@ class Login extends Component
             }
             // return redirect()->intended('/dashboard');
         } else {
-            $this->addError('email', 'Email atau password salah.');
+            $this->addError('username', 'username atau password salah.');
         }
     }
 

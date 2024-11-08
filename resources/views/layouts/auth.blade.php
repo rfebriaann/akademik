@@ -17,8 +17,8 @@
         @vite('resources/css/app.css')
         @stack('styles')
     </head>
-    <body class="">
-        <div class="">
+    <body class="bg-[#F5F2EB] p-10">
+        <div class="h-full">
             {{$slot}}
         </div>
         <script src="https://cdn.datatables.net/v/bs4/dt-1.13.6/datatables.min.js"></script>
