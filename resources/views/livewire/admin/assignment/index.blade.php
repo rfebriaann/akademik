@@ -56,7 +56,7 @@
                                                 <th scope="row" class="px-4 sm:px-10 py-4 font-medium text-gray-900 whitespace-nowrap">
                                                     {{ $assignment->nama_tugas }}
                                                 </th>
-                                                <td class="px-4 sm:px-20 py-4">
+                                                <td class="px-2 py-4">
                                                     <a href="{{ asset('storage/' . $assignment->file) }}" class="px-3 py-2 rounded-full bg-[#F796A8] text-gray-900" target="_blank">Unduh materi</a>
                                                 </td>
                                                 <td class="px-4 sm:px-2 py-4">{{ $assignment->course->nama_mata_kuliah }}</td>
@@ -76,12 +76,12 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="flex justify-center mt-4">
-                                    {{ $assignments->links() }}
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="flex gap-10 mt-4 mb-20">
+                        {{ $assignments->links() }}
                 </div>
             </div>
         </div>

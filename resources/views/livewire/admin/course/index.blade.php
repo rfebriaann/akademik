@@ -87,13 +87,16 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="flex justify-center mt-4">
+                                {{-- <div class="flex justify-center mt-4">
                                     {{ $courses->links() }}
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="flex gap-10 mt-4 mb-20">
+                    {{ $courses->links() }}
+            </div>
             </div>
         </div>
     </div>
